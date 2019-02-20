@@ -10,22 +10,25 @@ class App extends Component {
     this.state = {
       SearchResults: [
         {
-        name: '',
-        artist: '',
-        album: '',
-        id: ''
+        name: 'Creeping Death',
+        artist: 'Metallica',
+        album: 'Ride The Lightning',
+        id: '1',
+        isRemoval: true
         },
         {
-        name: '',
-        artist: '',
-        album: '',
-        id: ''
+        name: 'South of Heaven',
+        artist: 'Slayer',
+        album: 'South of Heaven',
+        id: '2',
+        isRemoval: false
         },
         {
-        name: '',
-        artist: '',
-        album: '',
-        id: ''
+        name: 'Symphony of Destruction',
+        artist: 'Megadeth',
+        album: 'Countdown to Extinction',
+        id: '3',
+        isRemoval: true
         }
       ]
     }
