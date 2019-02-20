@@ -21,7 +21,7 @@ class App extends Component {
         artist: 'Slayer',
         album: 'South of Heaven',
         id: '2',
-        isRemoval: false
+        isRemoval: true
         },
         {
         name: 'Symphony of Destruction',
@@ -30,9 +30,45 @@ class App extends Component {
         id: '3',
         isRemoval: true
         }
+      ],
+      PlaylistName: 'My Play List',
+      PlaylistTracks: [
+        {
+          name: 'Riders on the Storm',
+          artist: 'The Doors',
+          album: 'Riders on the Storm',
+          id: '1',
+          isRemoval: false
+          },
+          {
+          name: 'Angel of Death',
+          artist: 'Slayer',
+          album: 'South of Heaven',
+          id: '2',
+          isRemoval: false
+          },
+          {
+          name: 'Holy Wars',
+          artist: 'Megadeth',
+          album: 'Rust in Peace',
+          id: '3',
+          isRemoval: false
+          }
       ]
     }
+    this.addTrack = this.addTrack.bind(this);
   }
+  addTrack(track) {
+    this.state.PlaylistTracks.forEach(playlistTrack => {
+      if (playlistTrack.id !== track.id) {
+        this.setState({
+          PlaylistTracks: this.state.PlaylistTracks.concat(track)
+        });
+      }
+    });
+    
+  }
+
   render() {
     return (
       <div>
@@ -40,8 +76,8 @@ class App extends Component {
   <div className="App">
     <SearchBar />
     <div className="App-playlist">
-      <SearchResults SearchResults={this.state.SearchResults} />
-      <Playlist />
+      <SearchResults SearchResults={this.state.SearchResults} onAdd={this.addTrack} />
+      <Playlist  playlistName={this.state.PlaylistName} playlistTracks={this.state.PlaylistTracks} />
     </div>
   </div>
 </div>
