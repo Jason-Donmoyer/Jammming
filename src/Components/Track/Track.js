@@ -3,6 +3,14 @@ import './Track.css';
 
 
 class Track extends React.Component {
+    renderAction() {
+        if (isRemoval === true) {
+            document.querySelector('.Track-action').innerHTML('<a>-</a>');
+        } else if (isRemoval === false) {
+            document.querySelector('.Track-action').innerHTML('<a>+</a>');
+        }
+    }
+
     render() {
         return (
             <div className="Track">
@@ -10,7 +18,7 @@ class Track extends React.Component {
                     <h3>{/*<!-- track name will go here -->*/}</h3>
                     <p>{/*<!-- track artist will go here--> | <!-- track album will go here -->*/}</p>
                 </div>
-                <a className="Track-action">{/*<!-- + or - will go here -->*/}</a>
+                <a className="Track-action">{this.renderAction()}</a>
             </div>
         )
     };
