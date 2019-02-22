@@ -57,6 +57,8 @@ class App extends Component {
       ]
     }
     this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
   }
   addTrack(track) {
     this.state.PlaylistTracks.forEach(playlistTrack => {
@@ -65,8 +67,17 @@ class App extends Component {
           PlaylistTracks: this.state.PlaylistTracks.concat(track)
         });
       }
+    }); 
+  }
+  removeTrack(track) {
+    this.setState({
+      PlaylistTracks: this.state.PlaylistTracks.filter(playlistTrack => playlistTrack.id !== track.id)
     });
-    
+  }
+  updatePlaylistName(name) {
+    this.setState({
+      PlaylistName: name
+    });
   }
 
   render() {
@@ -77,7 +88,7 @@ class App extends Component {
     <SearchBar />
     <div className="App-playlist">
       <SearchResults SearchResults={this.state.SearchResults} onAdd={this.addTrack} />
-      <Playlist  playlistName={this.state.PlaylistName} playlistTracks={this.state.PlaylistTracks} />
+      <Playlist  playlistName={this.state.PlaylistName} playlistTracks={this.state.PlaylistTracks} onRemove={this.removeTrack} onNameChange={this.state.updatePlaylistName} />
     </div>
   </div>
 </div>
